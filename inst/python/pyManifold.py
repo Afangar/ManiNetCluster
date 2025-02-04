@@ -14,7 +14,7 @@ import numpy as np
 controller = ThreadpoolController()
 @controller.wrap(limits=NTHREADS, user_api='blas')
 
-pprint(threadpool_info())
+controller.info()
 
 import scipy as sp
 import sys
