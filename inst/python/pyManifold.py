@@ -1,6 +1,16 @@
 ''' adapted from https://github.com/all-umass/ManifoldWarping '''
+import os
+os.environ["OMP_NUM_THREADS"] = "4" # export OMP_NUM_THREADS=4
+os.environ["OPENBLAS_NUM_THREADS"] = "4" # export OPENBLAS_NUM_THREADS=4 
+os.environ["MKL_NUM_THREADS"] = "6" # export MKL_NUM_THREADS=6
+os.environ["VECLIB_MAXIMUM_THREADS"] = "4" # export VECLIB_MAXIMUM_THREADS=4
+os.environ["NUMEXPR_NUM_THREADS"] = "6" # export NUMEXPR_NUM_THREADS=6
+
+from threadpoolctl import threadpool_info
+from pprint import pprint
 
 import numpy as np
+pprint(threadpool_info())
 import scipy as sp
 import sys
 import time
@@ -55,7 +65,7 @@ class Correspondence(object):
     P = self.pairs()
     if not XtoY:
       P = np.fliplr(P)
-    warp_inds = np.zeros(A.shape[0],dtype=np.int)
+    warp_inds = np.zeros(A.shape[0],dtype=np.int64)
     j = 0
     for i in range(A.shape[0]):
       while P[j,0] < i:
@@ -66,7 +76,7 @@ class Correspondence(object):
   def _bound_row(self):
     P = self.pairs()
     n = P.shape[0]
-    B = np.zeros((P[-1,0]+1,2),dtype=np.int)
+    B = np.zeros((P[-1,0]+1,2),dtype=np.int64)
     head = 0
     while head < n:
       i = P[head,0]
@@ -132,7 +142,7 @@ def _python_dtw_path(dist):
   '''Pure python, slow version of DTW'''
   nx,ny = dist.shape
   cost = np.zeros(dist.shape)
-  trace = np.zeros(dist.shape,dtype=np.int)
+  trace = np.zeros(dist.shape,dtype=np.int64)
   cost[0,:] = np.cumsum(dist[0,:])
   cost[:,0] = np.cumsum(dist[:,0])
   trace[0,:] = 1
@@ -166,7 +176,7 @@ else:
   def _dtw_path(dist):
     '''Fast DTW, with inlined C'''
     nx,ny = dist.shape
-    path = np.zeros((nx+ny,2),dtype=np.int)
+    path = np.zeros((nx+ny,2),dtype=np.int64)
     code = '''
     int i,j;
     double* cost = new double[ny];
