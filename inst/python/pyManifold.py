@@ -8,13 +8,11 @@ os.environ["VECLIB_MAXIMUM_THREADS"] = NTHREADS # export VECLIB_MAXIMUM_THREADS=
 os.environ["NUMEXPR_NUM_THREADS"] = NTHREADS # export NUMEXPR_NUM_THREADS=6
 
 from threadpoolctl import threadpool_info, ThreadpoolController, threadpool_limits
-from pprint import pprint
 
 import numpy as np
 controller = ThreadpoolController()
 @controller.wrap(limits=NTHREADS, user_api='blas')
 
-controller.info()
 
 import scipy as sp
 import sys
