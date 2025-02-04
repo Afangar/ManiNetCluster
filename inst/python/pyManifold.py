@@ -7,13 +7,7 @@ os.environ["MKL_NUM_THREADS"] = NTHREADS # export MKL_NUM_THREADS=6
 os.environ["VECLIB_MAXIMUM_THREADS"] = NTHREADS # export VECLIB_MAXIMUM_THREADS=4
 os.environ["NUMEXPR_NUM_THREADS"] = NTHREADS # export NUMEXPR_NUM_THREADS=6
 
-from threadpoolctl import threadpool_info, ThreadpoolController, threadpool_limits
-
 import numpy as np
-controller = ThreadpoolController()
-@controller.wrap(limits=NTHREADS, user_api='blas')
-
-
 import scipy as sp
 import sys
 import time
