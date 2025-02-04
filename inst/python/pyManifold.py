@@ -6,7 +6,8 @@ os.environ["OPENBLAS_NUM_THREADS"] = NTHREADS
 os.environ["MKL_NUM_THREADS"] = NTHREADS
 os.environ["VECLIB_MAXIMUM_THREADS"] = NTHREADS
 os.environ["NUMEXPR_NUM_THREADS"] = NTHREADS
-from threadpoolctl import threadpool_info
+
+import threadpool_info as tpc
 import numpy as np
 import scipy as sp
 import sys
