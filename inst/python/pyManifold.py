@@ -3,10 +3,10 @@ import os
 NTHREADS = 10
 os.environ["OMP_NUM_THREADS"] = NTHREADS
 os.environ["OPENBLAS_NUM_THREADS"] = NTHREADS
-#os.environ["MKL_NUM_THREADS"] = NTHREADS # export MKL_NUM_THREADS=6
-#os.environ["VECLIB_MAXIMUM_THREADS"] = NTHREADS # export VECLIB_MAXIMUM_THREADS=4
-#os.environ["NUMEXPR_NUM_THREADS"] = NTHREADS # export NUMEXPR_NUM_THREADS=6
-
+os.environ["MKL_NUM_THREADS"] = NTHREADS
+os.environ["VECLIB_MAXIMUM_THREADS"] = NTHREADS
+os.environ["NUMEXPR_NUM_THREADS"] = NTHREADS
+from threadpoolctl import threadpool_info
 import numpy as np
 import scipy as sp
 import sys
