@@ -1,15 +1,18 @@
 ''' adapted from https://github.com/all-umass/ManifoldWarping '''
 import os
-os.environ["OMP_NUM_THREADS"] = "4" # export OMP_NUM_THREADS=4
-os.environ["OPENBLAS_NUM_THREADS"] = "4" # export OPENBLAS_NUM_THREADS=4 
-os.environ["MKL_NUM_THREADS"] = "6" # export MKL_NUM_THREADS=6
-os.environ["VECLIB_MAXIMUM_THREADS"] = "4" # export VECLIB_MAXIMUM_THREADS=4
-os.environ["NUMEXPR_NUM_THREADS"] = "6" # export NUMEXPR_NUM_THREADS=6
+NTHREADS = 10
+os.environ["OMP_NUM_THREADS"] = NTHREADS # export OMP_NUM_THREADS=4
+os.environ["OPENBLAS_NUM_THREADS"] = NTHREADS # export OPENBLAS_NUM_THREADS=4 
+os.environ["MKL_NUM_THREADS"] = NTHREADS # export MKL_NUM_THREADS=6
+os.environ["VECLIB_MAXIMUM_THREADS"] = NTHREADS # export VECLIB_MAXIMUM_THREADS=4
+os.environ["NUMEXPR_NUM_THREADS"] = NTHREADS # export NUMEXPR_NUM_THREADS=6
 
-from threadpoolctl import threadpool_info
+from threadpoolctl import threadpool_info, ThreadpoolController
 from pprint import pprint
 
 import numpy as np
+controller = ThreadpoolController()
+@controller.wrap(limits=NTHREADS, user_api='blas')
 pprint(threadpool_info())
 import scipy as sp
 import sys
