@@ -1,11 +1,11 @@
 ''' adapted from https://github.com/all-umass/ManifoldWarping '''
-import os
-NTHREADS = 10
-os.environ["OMP_NUM_THREADS"] = NTHREADS # export OMP_NUM_THREADS=4
-os.environ["OPENBLAS_NUM_THREADS"] = NTHREADS # export OPENBLAS_NUM_THREADS=4 
-os.environ["MKL_NUM_THREADS"] = NTHREADS # export MKL_NUM_THREADS=6
-os.environ["VECLIB_MAXIMUM_THREADS"] = NTHREADS # export VECLIB_MAXIMUM_THREADS=4
-os.environ["NUMEXPR_NUM_THREADS"] = NTHREADS # export NUMEXPR_NUM_THREADS=6
+#import os
+#NTHREADS = 10
+#os.environ["OMP_NUM_THREADS"] = NTHREADS # export OMP_NUM_THREADS=4
+#os.environ["OPENBLAS_NUM_THREADS"] = NTHREADS # export OPENBLAS_NUM_THREADS=4 
+#os.environ["MKL_NUM_THREADS"] = NTHREADS # export MKL_NUM_THREADS=6
+#os.environ["VECLIB_MAXIMUM_THREADS"] = NTHREADS # export VECLIB_MAXIMUM_THREADS=4
+#os.environ["NUMEXPR_NUM_THREADS"] = NTHREADS # export NUMEXPR_NUM_THREADS=6
 
 import numpy as np
 import scipy as sp
