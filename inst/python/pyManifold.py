@@ -13,7 +13,7 @@ from pprint import pprint
 import numpy as np
 controller = ThreadpoolController()
 @controller.wrap(limits=NTHREADS, user_api='blas')
-pprint(threadpool_info())
+#pprint(threadpool_info())
 import scipy as sp
 import sys
 import time
