@@ -1,6 +1,6 @@
 ''' adapted from https://github.com/all-umass/ManifoldWarping '''
-#import os
-#NTHREADS = 10
+import os
+NTHREADS = 10
 #os.environ["OMP_NUM_THREADS"] = NTHREADS # export OMP_NUM_THREADS=4
 #os.environ["OPENBLAS_NUM_THREADS"] = NTHREADS # export OPENBLAS_NUM_THREADS=4 
 #os.environ["MKL_NUM_THREADS"] = NTHREADS # export MKL_NUM_THREADS=6
