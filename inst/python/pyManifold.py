@@ -5,7 +5,7 @@ os.environ["OMP_NUM_THREADS"] = NTHREADS
 os.environ["OPENBLAS_NUM_THREADS"] = NTHREADS
 os.environ["MKL_NUM_THREADS"] = NTHREADS
 #os.environ["VECLIB_MAXIMUM_THREADS"] = NTHREADS
-os.environ["NUMEXPR_NUM_THREADS"] = NTHREADS
+#os.environ["NUMEXPR_NUM_THREADS"] = NTHREADS
 
 import numpy as np
 import scipy as sp
