@@ -1,17 +1,6 @@
 ''' adapted from https://github.com/all-umass/ManifoldWarping '''
-import os
-NTHREADS = '10'
-os.environ["OMP_NUM_THREADS"] = NTHREADS
-os.environ["OPENBLAS_NUM_THREADS"] = NTHREADS
-os.environ["MKL_NUM_THREADS"] = NTHREADS
-os.environ["VECLIB_MAXIMUM_THREADS"] = NTHREADS
-os.environ["NUMEXPR_NUM_THREADS"] = NTHREADS
 
-from threadpoolctl import threadpool_info
-from pprint import pprint
 import numpy as np
-pprint(threadpool_info())
-
 import scipy as sp
 import sys
 import time
